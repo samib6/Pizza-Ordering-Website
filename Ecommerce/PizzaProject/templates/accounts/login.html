@@ -1,0 +1,40 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block content %}
+
+    <div id="page-container">
+      <div id="content-wrapper">
+    		<div class="container login-container centered ">
+          <div class="login-header">
+            <img src="{% static 'img\site-logo.ico' %}" class="login-logo img-responsive">
+          </div>
+          <div class="login-info " style="border:2px solid #EB8A8A 0.7;">
+          <form action="{% url 'login' %}" method="POST">
+            {% include 'partials/_alerts.html' %}
+            {% csrf_token %}
+            <h2 style="color:black;padding-left:20px">Login</h4>
+            <div class="form-group">
+              <label for="username">Username:</label><br>
+              <input type="text" name="username" id="username" label="username" width=45%>
+            </div>
+              <div class="form-group">
+                <label for="password">Password:</label><br>
+              <input type="password" name="password" id="password" label="password" width=45%>
+            </div>
+            <div class="form-check">
+              <button class="btn  submit-button" type="submit" name="submit" id="submit" value="submit" >Submit</button>
+              </div>
+          </form>
+        </div>
+      <div class="register-link">
+        <p class="small-text"><small><i><center>New to Pinnochio's Pizza?</center></i></small></p>
+        <p><a href="{% url 'register' %}"><center>Click to Register Here</center></a></p>
+      </div>
+    </div>
+  </div>
+    <hr align="center" style="width:50%;height:1px;">
+    <div class="container">
+    <h5 class="login-footer"><small><center>@ 1996-2018 ,Pinnochio'sPizza.com,Inc or its affiliates</center></small></h5>
+  </div>
+  </div>
+{% endblock %}

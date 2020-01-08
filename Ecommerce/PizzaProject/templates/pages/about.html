@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static  %}
+{% block content %}
+<section class="about-us">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class=" img-holder fixed-bg">
+        <img src="{% static 'img/about-us.jpg' %}" class="img-responsive" style="width:100%;height:700px;">
+      </div>
+    </div>
+      <div class="col-lg-7" style="background-color:#ECEBEB;"><br>
+        <div class="title">
+        <p class="sub-heading-style" >some interesting facts</p>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni
+          -am, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo
+          -do consequat. Duis aute irure dolor in reprehenderit involuptate velit es
+          -se cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </p>
+        <br>
+        <br>
+        <ul class="list-unstyled">
+          <li><i class="fa fa-check about-us-check-icon" aria-hidden="true"></i> proin libero nunc consequat interdum</li>
+          <li><i class="fa fa-check about-us-check-icon" aria-hidden="true"></i> pellentesque nec nam aliquam sem</li>
+          <li><i class="fa fa-check about-us-check-icon" aria-hidden="true"></i> dignissim diam quis enim lobortis</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="our-team">
+    <p class="sub-heading">Our Team</p>
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-xs-12 col-md-6 col-sm-12">
+        <div class="card  mb-3 about-us-team-card">
+          <img src="{% static 'img\Head-baker.jpg' %}" class="card-img-top about-us-team-card-img">
+          <div class="card-body">
+            <h5 class="card-title">Sam Watson</h5>
+            <p class="card-text">Head baker</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-12 col-md-6 col-sm-12">
+        <div class="card mb-3 about-us-team-card">
+          <img src="{% static 'img\Pizza-chef.jpg' %}" class="card-img-top about-us-team-card-img ">
+          <div class="card-body">
+            <h5 class="card-title">Richard Peterson</h5>
+            <p class="card-text">Pizza Chef</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-12 col-md-6 col-sm-12">
+        <div class="card mb-3 about-us-team-card">
+          <img src="{% static 'img\Head-chef.jpg' %}" class="card-img-top about-us-team-card-img">
+          <div class="card-body">
+            <h5 class="card-title">Amelia Lee</h5>
+            <p class="card-text">Head Chef</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-12 col-md-6 col-sm-12 ">
+        <div class="card mb-3 about-us-team-card">
+          <img src="{% static 'img\Head-manager.jpg' %}" class="card-img-top  about-us-team-card-img">
+          <div class="card-body">
+            <h5 class="card-title">Brad Smith</h5>
+            <p class="card-text">Head Pizza Chef</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+{% endblock %}

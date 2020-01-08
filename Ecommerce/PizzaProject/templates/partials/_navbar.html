@@ -1,0 +1,99 @@
+{% load static %}
+
+<div id="page-container">
+  <div id="content-wrapper">
+    <div class = "container-fluid">
+        <nav class = "navbar fixed-top navbar-expand-lg navbar-light" style="background-color:#D81C32;">
+          <button class = "navbar-toggler" type = "button" data-toggle ="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class = "navbar-brand" href="#">
+          <img src = "{% static 'img\site-logo.ico' %}" width = "450" height ="80" alt = "no image" class="d-inline-block align-top">
+          </a>
+
+          <ul class = " navbar-nav mt-2 mt-lg-0 ml-auto">
+
+
+            <li
+              {% if '/' ==  request.path %}
+              class ="nav-item active"
+              {% else %}
+              class ="nav-item"
+              {% endif %}
+            >
+              <a class="nav-link" id="alink" href="{% url 'pages:index' %}">Home</a>
+            </li>
+
+
+            <li
+             {% if 'about' in request.path %}
+            class ="nav-item active"
+            {% else %}
+            class ="nav-item"
+            {% endif %}
+            >
+              <a class="nav-link active" id="alink"  href="{% url 'pages:about' %}">About Us</a>
+            </li>
+
+            <li class = "nav-item">
+              <a class="nav-link active" id="alink" href="{% url 'Menu:product_list' %}">Menu</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class = "nav-item active">
+                  <a class="nav-link alink" id="alink" href="#">Welcome {{user.username}}
+                    <i class="fa fa-cart-plus" aria-hidden="true">
+                      {% with total_items=cart|length %} <!-- donot give spaces between with assigned else error -->
+                        {% if cart|length > 0 %}
+                          <span class="w3-badge w3-white"id="alink">
+                            <a href="{% url "cart:cart_detail" %}">
+                               {{ total_items }},Rs.{{ cart.get_total_price }}
+                            </a>
+                          </span>
+                        {% else %}
+                          Cart Empty
+                       {% endif %}
+                      {% endwith  %}
+                    </i>
+                  </a>
+                </li>
+                <li class="nav-item"><a class="nav-link" id="alink" href="javascript:{document.getElementById('logout').submit()}">
+                  Logout</a>
+                  <form action = "{% url 'logout' %}" method="POST" id= "logout">
+                    {% csrf_token %}
+                    <input type="hidden">
+                  </form>
+              </li>
+
+
+            {% else %}
+            <!-- login -->
+            <li
+            {% if 'login' in request.path %}
+              class = "nav-item active"
+            {% else %}
+              class="nav-item"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+
+            <!-- register -->
+            <li
+            {% if 'register' in request.path %}
+              class = "nav-item active"
+            {% else %}
+              class = "nav-item"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
+
+            <!-- cart -->
+            </li>
+
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+</div>

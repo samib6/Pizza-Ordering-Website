@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Your Shopping Cart
+{% endblock %}
+
+{% block content %}
+<section class="shopping-cart">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <h2>Total Amount:&nbsp;</h2><h4 id="grandtotal">{{ cart.get_total_price }}</h4>
+              <th class="p_dtl">Product Details</th>
+              <th class="p_price">Price</th>
+              <th class="p_quantity">Quantity</th>
+              <th class="p_btn">Remove</th>
+              <th class="p_ttl">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for item in cart %}
+          {% with product=item.product %}
+            <tr>
+              <td class="p_dtl">
+                <div class="block-cart">
+                  <div class="img-holder">
+                    <img src="{{ product.image.url }}" alt="No Image" class="img-responsive" width="330px" height = "200px">
+                  </div>
+                  <div class="info-block">
+                    <h5>{{ product.name }}</h5>
+                    <p class="txt-cat">Regular</p>
+                    <p class="abt-txt-block">{{ product.description }}</p>
+
+                  </div>
+                </div>
+              </td>
+
+              <td class="p_price" id="pprice">
+                Rs.{{ item.price }}
+              </td>
+              <td class="p_quantity">
+                <div class="quantity">
+                  <form action="{% url "cart:cart_add" product.id %}" method="post">
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.update }}
+                    <input type="submit" value="Update">
+                    {% csrf_token %}
+                  </form>
+                </div>
+              </td>
+
+              <td class="p_btn">
+                <a href="{% url "cart:cart_remove" product.id %}">
+                  Remove
+                </a>
+              </td>
+
+              <td class="p_ttl">
+                Rs.{{ item.total_price }}
+              </td>
+
+            </tr>
+            {% endwith %}
+          {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+  </div>
+  <p class="text-right">
+    <a href="{% url 'Menu:product_list' %}">Back To Menu</a>
+    <a href="{% url "orders:order_create" %}" class="button">Checkout</a>
+  </p>
+</div>
+
+</div>
+<div style="clear:both">
+</div>
+</section>
+
+
+{% endblock %}

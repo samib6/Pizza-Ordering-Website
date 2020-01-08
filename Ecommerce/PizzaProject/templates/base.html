@@ -1,0 +1,36 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="pragma" content="no-cache" />
+  <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/header_style.css' %}">
+
+
+  <title>Pinochios Pizza</title>
+</head>
+<body>
+  <!-- top bar -->
+  {% include 'partials/_navbar.html' %}
+  <!-- main content -->
+  {% block content  %}{% endblock %}
+
+    <!-- footer -->
+    {% include 'partials/_footer.html' %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
